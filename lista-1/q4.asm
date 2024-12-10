@@ -2,8 +2,8 @@
    t_result:	.asciiz "result: "
    t_remainder:	.asciiz "\nremainder: "
    break_line:	.asciiz "\n"
-   DIVIDENDO:	.word 1000000
-   DIVISOR:	.word 1
+   DIVIDENDO:	.word 512
+   DIVISOR:	.word 14
    RESULT:	.word 0
    REMAINDER:	.word 0
 .text
