@@ -2,8 +2,9 @@
    t_result:	.asciiz "result: "
    t_remainder:	.asciiz "\nremainder: "
    break_line:	.asciiz "\n"
+   
    DIVIDENDO:	.word 42
-   DIVISOR:	.word 12
+   DIVISOR:	.word 12   
    RESULT:	.word 0
    REMAINDER:	.word 0
 .text
@@ -42,12 +43,12 @@ print_values:
 
 divisao:
    
-   slt $t4, $t0, $zero		    # dvsr_signal = (divisor < 0);
+   slt $t4, $t0, $zero		    # bool dvsr_signal = (divisor < 0);
    beqz $t4, end_inverter_divisor   # if (divisor < 0)
    	sub $t0, $zero, $t0	    # 	divisor = -divisor;
    end_inverter_divisor:
    
-   slt $t5, $t1, $zero		    # dvdn_signal = (dividendo < 0);
+   slt $t5, $t1, $zero		    # bool dvdn_signal = (dividendo < 0);
    beqz $t5, end_inverter_dividendo # if (dividendo < 0)
    	sub $t1, $zero, $t1	    # 	dividendo = -dividendo;
    end_inverter_dividendo:
@@ -69,7 +70,7 @@ divisao:
    sub $t0, $zero, $t0		     #   remainder = -remainder
    end_inverter_remaining:	     # }
    
-   sw $t0, RESULT    # RESULT = result;
+   sw $t0, RESULT    	# RESULT = result;
    sw $t2, REMAINDER	# REMAINDER = remainder;
    jal print_values
    j exit
